@@ -54,6 +54,7 @@ int main()
     char name[100];
     char fmt[] = "%99s";
 
+    puts("Введите имя и фамилию");
     scanf(fmt, name);
 
     int sz = strlen(name);
