@@ -99,7 +99,8 @@ int main()
     int task_no = rand() % ARRSZ(tasks);
 
     printf("%s, Ваше задание -- реализовать консольную утилиту %s "
-               "(см. https://www.opennet.ru/man.shtml?topic=%s&category=1)\n",
+               "(см. https://www.opennet.ru/man.shtml?topic=%s&category=1)\n"
+               "В качестве альтернативы также возможно выполнить задание по ссылке: http://imcs.dvfu.ru/works/task_view?id=47584\n",
            wname + name_sz + 1,
            tasks[task_no],
            tasks[task_no]);
