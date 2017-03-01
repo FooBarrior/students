@@ -17,7 +17,7 @@ typedef union unichr
 } unichr;
 
 
-void utf8_to_cp1251(char *src)
+void utf8_to_cp1251(char *str)
 {
     for (char *ptr = str; *ptr; ptr++)
     {
@@ -44,3 +44,4 @@ void utf8_to_cp1251(char *src)
     }
     *str = 0;
 }
+
