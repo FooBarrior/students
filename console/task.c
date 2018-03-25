@@ -52,7 +52,7 @@ int main()
 {
     _binary_students_txt_end = 0;
 
-    srand(81771);
+    srand(13372018);
 
     char wname[100], name[100];
     char fmt[] = "%99s";
