@@ -8,7 +8,7 @@ extern char _binary_students_txt_end;
 
 #define ARRSZ(a) (sizeof (a) / sizeof (a)[0])
 
-const char *tasks[] = {"tail", "head", "wc", "echo", "cat", "cp", "mv", "ar", "sort", "date", "du", "ls",};
+static const char *tasks[] = {"tail", "head", "wc", "echo", "cat", "cp", "mv", "ar", "sort", "date", "du", "ls",};
 
 static int find(char *s, char *end)
 {
