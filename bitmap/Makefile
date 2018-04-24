@@ -41,7 +41,7 @@ $(shell bash -c '
 	tasks=($(tasks))
 	if [[ $$num -ge $(n) ]]
 	then echo No student $(query)
-	else echo $${tasks[$$((num % $(task_n)))]}
+	else echo "$${tasks[$$((num % $(task_n)))]}"
 	fi')
 endef
 
@@ -49,7 +49,7 @@ dumb: print # avoid error with empty command
 
 print:
 ifeq ($(words $(MAKECMDGOALS)),2)
-	@echo $(get_task)
+	@echo "$(get_task)"
 else
 	@echo "usage: make <name> <surname>"
 endif
