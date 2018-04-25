@@ -8,7 +8,7 @@ extern char _binary_students_txt_end;
 
 #define ARRSZ(a) (sizeof (a) / sizeof (a)[0])
 
-const char *tasks[] = {"tail", "head", "wc", "echo", "cat", "cp", "mv", "ar", "sort", "date", "du", "ls",};
+static const char *tasks[] = {"tail", "head", "wc", "echo", "cat", "cp", "mv", "ar", "sort", "date", "du", "ls",};
 
 static int find(char *s, char *end)
 {
@@ -45,12 +45,22 @@ static void flip_name(char *name, char *surname, char *end)
     strrev(name, end);
 }
 
+static void ye_to_yo(char *s)
+{
+    do
+    {
+        *s += *s == (char)0xb8 || *s == (char)0xa8 ? 0xe5 - 0xb8 : 0;
+    } while (*s++);
+}
+
 void utf8_to_cp1251(char*);
 
 
 int main()
 {
     _binary_students_txt_end = 0;
+
+    ye_to_yo(_binary_students_txt_start);
 
     srand(13372018);
 
