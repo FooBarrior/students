@@ -39,7 +39,8 @@ $(shell bash -c '
 	((num++));
 	done;
 	tasks=($(tasks))
-	if [[ $$num -ge $(n) ]]
+
+	if [[ $$num -gt $(n) ]]
 	then echo No student $(query)
 	else echo "$${tasks[$$((num % $(task_n)))]}"
 	fi')
