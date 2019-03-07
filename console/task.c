@@ -62,7 +62,7 @@ int main()
 
     ye_to_yo(_binary_students_txt_start);
 
-    srand(13372018);
+    srand(13372019);
 
     char wname[100], name[100];
     char fmt[] = "%99s";
