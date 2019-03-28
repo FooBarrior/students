@@ -6,7 +6,7 @@ SHELL=/bin/bash
 length = $(shell lst=($(1)); echo $${\#lst[@]})
 
 define shuffle =
-$(shell	(RANDOM=13372018; lst=($(1));
+$(shell	(RANDOM=13372019; lst=($(1));
 	for s in "$${lst[@]}";
 	do printf "%06d  \"%s\"\n" $$RANDOM "$$s";
 	done) | sort -n | cut -c8-;
