@@ -9,29 +9,39 @@ typedef int LSQ_BaseTypeT;
 /* Дескриптор контейнера */
 typedef void* LSQ_HandleT;
 
-/* Неинициализированное значение дескриптора контейнера */
-#define LSQ_HandleInvalid NULL
-
 /* Дескриптор итератора */
 typedef void* LSQ_IteratorT;
 
 /* Тип целочисленного индекса контейнера */
 typedef int LSQ_IntegerIndexT;
 
+typedef enum {
+	LSQ_OK = 0,
+	LSQ_OUT_OF_MEMORY, /* Недостаточно оперативной памяти или другая ошибка выделения*/
+	LSQ_CORRUPTED,     /* Дескриптор повреждён или неверен */
+	LSQ_UNKNOWN,       /* Неизвестная ошибка */
+} LSQ_Result;
+
 /* Функция, создающая пустой контейнер. Возвращает назначенный ему дескриптор */
 extern LSQ_HandleT LSQ_CreateSequence(void);
 /* Функция, уничтожающая контейнер с заданным дескриптором. Освобождает принадлежащую ему память */
 extern void LSQ_DestroySequence(LSQ_HandleT handle);
 
+/* Функция, проверяющая контейнер на валидность */
+extern bool LSQ_IsHandleInvalid(LSQ_HandleT handle);
+
+/* Функция, возвращающая последнюю произошедшую ошибку, см. LSQ_Result */
+extern LSQ_Result LSQ_GetLastError();
+
 /* Функция, возвращающая текущее количество элементов в контейнере */
 extern LSQ_IntegerIndexT LSQ_GetSize(LSQ_HandleT handle);
 
 /* Функция, определяющая, может ли данный итератор быть разыменован */
-extern int LSQ_IsIteratorDereferencable(LSQ_IteratorT iterator);
+extern bool LSQ_IsIteratorDereferencable(LSQ_IteratorT iterator);
 /* Функция, определяющая, указывает ли данный итератор на элемент, следующий за последним в контейнере */
-extern int LSQ_IsIteratorPastRear(LSQ_IteratorT iterator);
+extern bool LSQ_IsIteratorPastRear(LSQ_IteratorT iterator);
 /* Функция, определяющая, указывает ли данный итератор на элемент, предшествующий первому в контейнере */
-extern int LSQ_IsIteratorBeforeFirst(LSQ_IteratorT iterator);
+extern bool LSQ_IsIteratorBeforeFirst(LSQ_IteratorT iterator);
 
 /* Функция разыменовывающая итератор. Возвращает указатель на элемент, на который ссылается данный итератор */
 extern LSQ_BaseTypeT* LSQ_DereferenceIterator(LSQ_IteratorT iterator);
